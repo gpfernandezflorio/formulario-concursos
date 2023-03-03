@@ -9,7 +9,7 @@
 \usepackage[spanish]{babel}
 \usepackage{dashrule}
 \usepackage{ifthen}
-\usepackage[pdftex,top=4cm,left=2.5cm,right=2.5cm,bottom=4cm,head=50pt,foot=20pt]{geometry}
+\usepackage[pdftex,top=5cm,left=2cm,right=1.5cm,bottom=4cm,head=110pt,foot=20pt]{geometry}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -20,6 +20,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{array}
 \input{datos_del_aspirante}
 
 \newcommand{\titulosec}[1]{\textbf{\textsf{\MakeUppercase{#1}}}}
@@ -29,22 +30,30 @@
   \noindent\rule{\textwidth}{1pt}
 }
 \newcommand{\campo}[1]{\noindent\small{\titulosec{#1}}}
-\newcommand{\dato}[1]{\textit{#1}}
+\newcommand{\dato}[1]{{
+  \setlength\extrarowheight{5pt}
+  \begin{tabular}{|l|}
+  \hline
+  \Large \textit{#1} \hfill\\
+  \hline
+  \end{tabular}
+}}
 
 %% header
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{
   \begin{center}
-  \setlength\tabcolsep{20pt}
-  \begin{tabular}{|c|c|c|c|}
+  \setlength\extrarowheight{5pt}
+  \begin{tabular}{|m{0.12\textwidth}|m{0.29\textwidth}|m{0.21\textwidth}|m{0.21\textwidth}|}
       \hline
       \multirow{4}{*}{\includegraphics[scale=0.5]{exactas.png}}&\multicolumn{3}{|c|}{{\scriptsize\textsf{FORMULARIO}}}\\
       \cline{2-4}
       &\multicolumn{3}{|c|}{\titulosec{Solicitud de Inscripción a Concurso regular}}\\
       &\multicolumn{3}{|c|}{\titulosec{o a Selección interina de docentes auxiliares}}\\
       \cline{2-4}
-      &Código: FORM-CONC-001&Versión: 1&Fecha: 08-02-2023\\
+      &\centering Código: FORM-CONC-001&\centering Versión: 1&Fecha: 08-02-2023
+      \\
       \hline
   \end{tabular}
   \end{center}
@@ -56,16 +65,18 @@
   \includegraphics[scale=\escalaFirmaCadaCarilla]{\firma}\ \ \
   \fi
   \begin{center}
-  {\scriptsize
-  \begin{tabular}{|c|c|c|c|}
+  \textsf{
+  {\small
+  \begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|p{0.1\textwidth}|}
       \hline
-      Elaboró/ modificó: YA&Revisó: LZ&\multicolumn{2}{|c|}{Aprobó: TK}\\
+      Elaboró/ modificó: YA&Revisó: LZ&\multicolumn{2}{|p{0.3\textwidth}|}{Aprobó: TK}\\
       \hline
-      \multicolumn{3}{|c|}{Sistema de Gestión de la Calidad - sg.exactas.uba.ar/gestion/calidad}&Página \thepage\ de \pageref{LastPage}\\
+      \multicolumn{3}{|p{0.8\textwidth}|}{Sistema de Gestión de la Calidad - sg.exactas.uba.ar/gestion/calidad}&Página \thepage\ de \pageref{LastPage}\\
       \hline
   \end{tabular}
   }
-  \\ {\tiny Para proponer modificaciones a este formulario escribir a subse$\_$gestion@de.fcen.uba.ar}
+  \\ {\footnotesize Para proponer modificaciones a este formulario escribir a subse$\_$gestion@de.fcen.uba.ar}
+  }
   \end{center}
 }
 \renewcommand{\headrulewidth}{0pt}
@@ -84,7 +95,20 @@
 \end{tabular}
 }
 
-\newcommand{\fechaNacimiento}{\noindent \dato{\numeroDiaNacimientoDelAspirante} /\hspace{0.1cm} \dato{\numeroMesNacimientoDelAspirante} /\hspace{0.1cm} \dato{\anioNacimientoDelAspirante}}
+\newcommand{\recuadro}[1]{
+  \begin{center}
+  \begin{tabular}{|m{0.9\textwidth}|}
+      \hline
+      \begin{center}
+      \textsf{\textbf{#1}}
+      \end{center}
+      \\
+      \hline
+  \end{tabular}
+  \end{center}
+}
+
+\newcommand{\fechaNacimiento}{\noindent \dato{\numeroDiaNacimientoDelAspirante /\hspace{0.1cm} \numeroMesNacimientoDelAspirante /\hspace{0.1cm} \anioNacimientoDelAspirante}}
 \newcommand{\fecha}[3]{\MakeUppercase{\textbf{#1 de #2 de #3}}}
 \newcommand{\enlace}[2]{\href{#1}{\textcolor{blue}{\underline{#2}}}}
 
@@ -97,14 +121,17 @@
 
 \begin{document}
 
-\begin{center}
-\setlength\tabcolsep{80pt}
-\begin{tabular}{|c|}
-    \hline
-    Los campos marcados con \* son de llenado obligatorio\\
-    \hline
-\end{tabular}
-\end{center}
+\recuadro{Los campos marcados con * son de llenado obligatorio}
+% \begin{center}
+% \begin{tabular}{|m{0.9\textwidth}|}
+%     \hline
+%     \begin{center}
+%     \textsf{\textbf{Los campos marcados con * son de llenado obligatorio}}
+%     \end{center}
+%     \\
+%     \hline
+% \end{tabular}
+% \end{center}
 
 \seccion{Datos del Concurso}
 
@@ -141,7 +168,7 @@
 
 \noindent \ifdefined\considerameLaPandemia \checkOff \else \checkOn \fi\ Deseo que NO se consideren los antecedentes comprendidos en el período de marzo 2020 - marzo 2022.
 
-\noindent \textit{\textcolor{gray}{Nota: si no marca el casillero, SÍ se considerarán sus antecedentes en el período indicado.}}
+\noindent \textit{Nota: si no marca el casillero, SÍ se considerarán sus antecedentes en el período indicado.}
 
 \noindent \enlace{https://exactas.uba.ar/wp-content/uploads/2022/04/CD-22-0411-MODIFICACION-REGLAMENTO.pdf}{Res. CD 411/22} sobre antecedentes en pandemia.
 
@@ -163,15 +190,18 @@
 
 \noindent \titulosec{Desarrollar los Puntos Siguientes}
 
-\begin{center}
-\setlength\tabcolsep{3pt}
-\begin{tabular}{|c|}
-    \hline
-    \textbf{En todos los casos ordenar los antecedentes cronológicamente, poniendo primero los más recientes.} \\
-    \textbf{Indicar con la inscripción “no corresponde” aquello que no se complete.} \\
-    \hline
-\end{tabular}
-\end{center}
+\recuadro{En todos los casos ordenar los antecedentes cronológicamente, poniendo primero los más recientes.\\Indicar con la inscripción “no corresponde” aquello que no se complete.}
+% \begin{center}
+% \begin{tabular}{|m{0.9\textwidth}|}
+%     \hline
+%     \begin{center}
+%     \textbf{En todos los casos ordenar los antecedentes cronológicamente, poniendo primero los más recientes.} \\
+%     \textbf{Indicar con la inscripción “no corresponde” aquello que no se complete.}
+%     \end{center}
+%     \\
+%     \hline
+% \end{tabular}
+% \end{center}
 
 \noindent \titulosec{1. Antecedentes docentes}
 
@@ -201,14 +231,15 @@
 
 \licencias
 
-\begin{center}
-\setlength\tabcolsep{60pt}
-\begin{tabular}{|c|}
-    \hline
-    \textbf{La información suministrada tiene carácter de DECLARACIÓN JURADA.} \\
-    \hline
-\end{tabular}
-\end{center}
+\recuadro{La información suministrada tiene carácter de DECLARACIÓN JURADA.}
+% \begin{center}
+% \setlength\tabcolsep{60pt}
+% \begin{tabular}{|c|}
+%     \hline
+%     \textbf{La información suministrada tiene carácter de DECLARACIÓN JURADA.} \\
+%     \hline
+% \end{tabular}
+% \end{center}
 
 \vspace{100pt}
 
