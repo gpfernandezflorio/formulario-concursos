@@ -1,0 +1,223 @@
+% ESTE ARCHIVO NO DEBERÍA SER MODIFICADO
+  % Completar los datos en datos_del_aspirante.tex
+  % Completar los antescendentes en docentes.tex, extension.tex, profesionales.tex y cientificos.tex
+  % Completar notas y otros en otros.tex
+  % Compilar con make
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{dashrule}
+\usepackage{ifthen}
+\usepackage[pdftex,top=4cm,left=2.5cm,right=2.5cm,bottom=4cm,head=50pt,foot=20pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{multirow}
+\usepackage{lastpage}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\input{datos_del_aspirante}
+
+\newcommand{\titulosec}[1]{\textbf{\textsf{\MakeUppercase{#1}}}}
+\newcommand{\seccion}[1]{
+  \bigskip
+  \noindent \titulosec{#1} \\
+  \noindent\rule{\textwidth}{1pt}
+}
+\newcommand{\campo}[1]{\noindent\small{\titulosec{#1}}}
+\newcommand{\dato}[1]{\textit{#1}}
+
+%% header
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{
+  \begin{center}
+  \setlength\tabcolsep{20pt}
+  \begin{tabular}{|c|c|c|c|}
+      \hline
+      \multirow{4}{*}{\includegraphics[scale=0.5]{exactas.png}}&\multicolumn{3}{|c|}{{\scriptsize\textsf{FORMULARIO}}}\\
+      \cline{2-4}
+      &\multicolumn{3}{|c|}{\titulosec{Solicitud de Inscripción a Concurso regular}}\\
+      &\multicolumn{3}{|c|}{\titulosec{o a Selección interina de docentes auxiliares}}\\
+      \cline{2-4}
+      &Código: FORM-CONC-001&Versión: 1&Fecha: 08-02-2023\\
+      \hline
+  \end{tabular}
+  \end{center}
+}
+
+%% footer
+\rfoot{
+  \ifdefined\firma
+  \includegraphics[scale=\escalaFirmaCadaCarilla]{\firma}\ \ \
+  \fi
+  \begin{center}
+  {\scriptsize
+  \begin{tabular}{|c|c|c|c|}
+      \hline
+      Elaboró/ modificó: YA&Revisó: LZ&\multicolumn{2}{|c|}{Aprobó: TK}\\
+      \hline
+      \multicolumn{3}{|c|}{Sistema de Gestión de la Calidad - sg.exactas.uba.ar/gestion/calidad}&Página \thepage\ de \pageref{LastPage}\\
+      \hline
+  \end{tabular}
+  }
+  \\ {\tiny Para proponer modificaciones a este formulario escribir a subse$\_$gestion@de.fcen.uba.ar}
+  \end{center}
+}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\radioOff}{$\circ$}
+\newcommand{\radioOn}{$\circledcirc$}
+\newcommand{\checkOff}{$\square$}
+\newcommand{\checkOn}{$\boxtimes$}
+
+\newcommand{\cargo}{
+\noindent \begin{tabular}{@{}clccl}
+\multicolumn{2}{@{}l}{\campo{Cargo concursar*:}} & & \multicolumn{2}{l}{\campo{Dedicación*:}}\\
+\ifdefined\JTP \radioOn\else \radioOff\fi & Jefe/a de trabajos prácticos & & \ifdefined\Parcial \radioOn\else \radioOff\fi & Parcial \\
+\ifdefined\AYp \radioOn\else \radioOff\fi & Ayudante de 1$^\circ$ & & \ifdefined\Semi \radioOn\else \radioOff\fi & SemiExclusiva \\
+\ifdefined\AYs \radioOn\else \radioOff\fi & Ayudante de 2$^\circ$ & & \ifdefined\Exclu \radioOn\else \radioOff\fi & Exclusiva
+\end{tabular}
+}
+
+\newcommand{\fechaNacimiento}{\noindent \dato{\numeroDiaNacimientoDelAspirante} /\hspace{0.1cm} \dato{\numeroMesNacimientoDelAspirante} /\hspace{0.1cm} \dato{\anioNacimientoDelAspirante}}
+\newcommand{\fecha}[3]{\MakeUppercase{\textbf{#1 de #2 de #3}}}
+\newcommand{\enlace}[2]{\href{#1}{\textcolor{blue}{\underline{#2}}}}
+
+\newcommand{\WorkEntry}[4]{
+        \item {#1}                                      % Jobname
+        \ifthenelse{\equal{#2}{}}{}{ \\ \textit{#2}}    % Company
+        \ifthenelse{\equal{#3}{}}{}{ \\ {#3}}           % Duration
+        \ifthenelse{\equal{#4}{}}{}{ \\ \hangindent=2em\hangafter=0
+          \small {#4} \normalsize}}                     % Description
+
+\begin{document}
+
+\begin{center}
+\setlength\tabcolsep{80pt}
+\begin{tabular}{|c|}
+    \hline
+    Los campos marcados con \* son de llenado obligatorio\\
+    \hline
+\end{tabular}
+\end{center}
+
+\seccion{Datos del Concurso}
+
+\medskip
+
+\campo{Departamento*:} \dato{Computación}
+
+\medskip
+
+\campo{Área a concursar*:} \dato{\area}
+
+\medskip
+
+\cargo
+
+\medskip
+
+\seccion{Datos Personales}
+
+\noindent \begin{tabular}{@{}lcl}
+  \campo{Apellido/s*:} \dato{\apellidoDelAspirante} & & \campo{Nombre/s*:} \dato{\nombresDelAspirante}
+  \\ \\
+  \campo{Documento tipo*:} \radioOn\ DNI \radioOff\ Pasaporte \radioOff\ LC & & \campo{Número*:} \dato{\numeroDocumentoDeIdentidadDelAspirante}
+  \\ \\
+  \campo{Fecha de nacimiento* {\scriptsize(DD/MM/AAAA)}:} \fechaNacimiento & & \campo{Legajo UBA:} \dato{\numeroDeLegajoDelAspirante}
+  \\ \\
+  \campo{Email*:} \dato{\emailDelAspirante} & & \campo{Email alternativo:} \dato{\emailAlternativoDelAspirante}
+  \\ \\
+\end{tabular}
+
+\campo{Teléfono celular* {\scriptsize(área número sin 0 sin 15)}:} \dato{\telefonoDelDomicilioDelAspirante}
+
+\seccion{Consideración De Antecedentes}
+
+\noindent \ifdefined\considerameLaPandemia \checkOff \else \checkOn \fi\ Deseo que NO se consideren los antecedentes comprendidos en el período de marzo 2020 - marzo 2022.
+
+\noindent \textit{\textcolor{gray}{Nota: si no marca el casillero, SÍ se considerarán sus antecedentes en el período indicado.}}
+
+\noindent \enlace{https://exactas.uba.ar/wp-content/uploads/2022/04/CD-22-0411-MODIFICACION-REGLAMENTO.pdf}{Res. CD 411/22} sobre antecedentes en pandemia.
+
+\seccion{Declaraciones}
+
+\newpage
+
+\noindent \hrulefill
+\\\\
+\noindent La presentación de este formulario implica la aceptación de las siguientes declaraciones:
+\\\\
+\noindent A) Declaro bajo juramento no encontrarme comprendido/a en las causales de inhabilitación para el desempeño de cargos públicos.
+\\\\
+\noindent B) Entiendo que la presentación de esta solicitud significa, por parte de quien se inscribe, el conocimiento de las condiciones fijadas en el Reglamento de Concursos aprobado por \enlace{https://exactas.uba.ar/wp-content/uploads/2022/12/Res.CD-28-09-Reglamento-Concursos-Docentes-Auxiliares.pdf}{Res. CD 28/09} y sus modificatorias de acuerdo a lo publicado en \enlace{https://exactas.uba.ar/institucional/concursos/}{https://exactas.uba.ar/institucional/concursos/}.
+\\\\
+\noindent C) Declaro conocer que, por \enlace{http://exactas.uba.ar/wp-content/uploads/2017/06/res.cd_716-86_incompatibilidad_de_cargo_con_beca.pdf}{Res. CD 716/86} el cargo de auxiliar docente con dedicación exclusiva o semiexclusiva es incompatible con el goce de una beca de igual dedicación.
+
+\newpage
+
+\noindent \titulosec{Desarrollar los Puntos Siguientes}
+
+\begin{center}
+\setlength\tabcolsep{3pt}
+\begin{tabular}{|c|}
+    \hline
+    \textbf{En todos los casos ordenar los antecedentes cronológicamente, poniendo primero los más recientes.} \\
+    \textbf{Indicar con la inscripción “no corresponde” aquello que no se complete.} \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent \titulosec{1. Antecedentes docentes}
+
+\input{docentes}
+
+\noindent \titulosec{2. Antecedentes científicos}
+
+\input{cientificos}
+
+\noindent \titulosec{3. Antecedentes de extensión}
+
+\input{extension}
+
+\noindent \titulosec{4. Antecedentes profesionales}
+
+\input{profesionales}
+
+\noindent \titulosec{5. Títulos, estudios, becas y distinciones, gestión, otros}
+
+\input{otros}
+
+\noindent \titulosec{6. Calificaciones (sólo para cargos de Ayudante de Primera y Segunda)}
+
+\input{calificaciones}
+
+\noindent \titulosec{7. Información sobre licencias}
+
+\licencias
+
+\begin{center}
+\setlength\tabcolsep{60pt}
+\begin{tabular}{|c|}
+    \hline
+    \textbf{La información suministrada tiene carácter de DECLARACIÓN JURADA.} \\
+    \hline
+\end{tabular}
+\end{center}
+
+\vspace{100pt}
+
+\begin{center}
+\ifdefined\firma \includegraphics[scale=\escalaFirmaPrincipal]{\firma}\fi
+
+\noindent\rule{5cm}{1pt}
+
+Firma del/la Solicitante
+\end{center}
+
+\end{document}
