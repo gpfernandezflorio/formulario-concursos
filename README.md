@@ -30,6 +30,6 @@ make
 ## Dudas y consultas
 
 Ante cualquier duda o consulta puede ser de utilidad referirse tanto al
-[formulario oficial](http://www.dc.uba.ar/academica/concursos/formulario) como el
-[reglamento](http://www.dc.uba.ar/academica/concursos/reglamento.pdf) provisto
+formulario oficial ([docx](https://www.dc.uba.ar/wp-content/uploads/2023/08/FORM-CONC-001-B-Solicitud-de-Inscripcion-a-Concurso-regular-o-a-Seleccion-interina-de-docentes-auxiliares-Antecedentes.docx), [odt](https://www.dc.uba.ar/wp-content/uploads/2023/08/FORM-CONC-001-B-Solicitud-de-Inscripcion-a-Concurso-regular-o-a-Seleccion-interina-de-docentes-auxiliares-Antecedentes.odt)) como el
+[reglamento](https://www.dc.uba.ar/wp-content/uploads/2023/04/Texto-ordenado-Reglamento-para-la-provision-de-cargos-de-docentes-auxiliares-abril-2023.pdf) provisto
 por el Departamento de Computación.
