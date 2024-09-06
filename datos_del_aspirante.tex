@@ -1,6 +1,33 @@
 %% Datos personales
 %% ----------------
 
+%% --------------------------------------------------------------------------
+%% --------------------------------------------------------------------------
+%% ATENCIÓN: a partir de la versión 2 (junio de 2023) ni los datos personales
+  %% ni los del concurso se incluyen en el pdf ya que estos se ingresan en el
+  %% sistema. Por lo tanto de este archivo lo único que hay que completar son
+  %% las licencias y la firma (en caso de querer usar un archivo como firma).
+%% --------------------------------------------------------------------------
+%% --------------------------------------------------------------------------
+
+% Completar si te tomaste alguna licencia.
+% Si estás concursando por primera vez, o si nunca tomaste una licencia, dejalo como está.
+% En otro caso, listá las licencias que te hayas pedido.
+\newcommand{\licencias}{No se tuvo ninguna licencia.}
+
+% Si tenés una imagen con tu firma, descomentá la siguiente línea para que se agregue en cada carilla:
+% \newcommand{\firma}{firma.jpg}
+
+% Si la imagen es muy chica o muy grande, modificá a continuación los valores de escala:
+\newcommand{\escalaFirmaPrincipal}{0.05}
+\newcommand{\escalaFirmaCadaCarilla}{0.16}
+
+%% -------------------------------------------------------------------------
+%% -------------------------------------------------------------------------
+%% Lo que sigue a partir de este punto ya no se inlcuye en el formulario así
+  %% que se puede ignorar. -------------------------------------------------
+%% -------------------------------------------------------------------------
+
 \newcommand{\nombresDelAspirante}{Homero J.}
 \newcommand{\apellidoDelAspirante}{Simpson}
 \newcommand{\numeroDocumentoDeIdentidadDelAspirante}{12.345.678}
@@ -21,29 +48,19 @@
 %% Concurso
 %% --------
 
-% Descomentar la línea que corresponda
+% Descomentar la línea que corresponda.
 % \newcommand{\JTP}{} % Jefe/a de trabajos prácticos
 % \newcommand{\AYp}{} % Ayudante de 1°
 \newcommand{\AYs}{} % Ayudante de 2°
 
-% Descomentar la línea que corresponda (para Ay2 es siempre Parcial)
+% Descomentar la línea que corresponda (para Ay2 es siempre Parcial).
 \newcommand{\Parcial}{} % Parcial
 % \newcommand{\Semi}{} % SemiExclusiva
 % \newcommand{\Exclu}{} % Exclusiva
 
-% Área a concursar "Algoritmos", "Sistemas" o "Teoría"
+% Área a concursar "Algoritmos", "Sistemas" o "Teoría".
 \newcommand{\area}{Algoritmos}
 
-% Completar si te tomaste alguna licencia
-% Si estás concursando por primera vez, dejalo como está
-\newcommand{\licencias}{No se tuvo ninguna licencia.}
-
-% Definir si querés que tengan en cuenta tu desempeño docente durante la pandemia (si no querés comentá la definición del comando)
-% Si estás concursando por primera vez, dejalo como está
+% Definir si querés que tengan en cuenta tu desempeño docente durante la pandemia (si no querés comentá la definición del comando).
+% Si estás concursando por primera vez, dejalo como está.
 \newcommand{\considerameLaPandemia}{}
-
-% Si tenés una imagen con tu firma, descomentá la siguiente línea para que se agregue en cada carilla:
-% \newcommand{\firma}{firma.jpg}
-% Si la imagen es muy chica o muy grande, modificá a continuación los valores de escala:
-\newcommand{\escalaFirmaPrincipal}{0.05}
-\newcommand{\escalaFirmaCadaCarilla}{0.16}

@@ -6,7 +6,7 @@ y Naturales de la Universidad de Buenos Aires.
 
 El mismo replica el formulario provisto por el Departamento de Computación de la
 Facultad que puede ser obtenido de la siguiente dirección:
-http://www.dc.uba.ar/academica/concursos/formulario.
+https://www.dc.uba.ar/descargas/.
 
 ## ¿Cómo se completa?
 
@@ -17,6 +17,7 @@ http://www.dc.uba.ar/academica/concursos/formulario.
 5. Escribir antecedentes profesionales en `profesionales.tex`.
 6. Escribir otros en `otros.tex`.
 7. Escribir calificaciones en `calificaciones.tex`.
+8. Si tenés una foto de tu firma, agregala a la carpeta del proyecto y descomentá `\newcommand{\firma}{firma.jpg}` en `datos_del_aspirante.tex`. Ajustar la escala con los comandos `\escalaFirmaPrincipal` y `\escalaFirmaCadaCarilla`.
 
 ## Generar formulario
 
@@ -26,6 +27,8 @@ generar el documento final:
 ```
 make
 ```
+
+También se puede generar desde [Overleaf](https://www.overleaf.com/) subiendo todos los archivos del proyecto.
 
 ## Dudas y consultas
 
